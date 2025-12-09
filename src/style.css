@@ -1,0 +1,217 @@
+/* Подключаем элегантную пару шрифтов: serif для заголовков, sans-serif для текста */
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@600&family=Roboto:wght@400;700&display=swap');
+
+/* CSS Переменные для спокойной, природной палитры */
+:root {
+    --font-headings: 'Lora', serif;
+    --font-main: 'Roboto', sans-serif;
+    
+    /* Цвета */
+    --color-bg: #f5f3f0; /* Теплый, почти белый фон */
+    --color-surface: #ffffff; /* Чистый белый для карточек */
+    --color-text-primary: #3a3a3a; /* Темный, мягкий серо-коричневый */
+    --color-text-secondary: #7a7a7a;
+    --color-accent-green: #4a6c52; /* Глубокий лесной зеленый */
+    --color-accent-terracotta: #d87c4a; /* Теплый терракотовый */
+    --color-border: #e0e0e0;
+
+    /* Другие стили */
+    --border-radius: 6px;
+    --shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+    --transition-speed: 0.3s ease;
+}
+
+/* Глобальные стили */
+body {
+    font-family: var(--font-main);
+    color: var(--color-text-primary);
+    background-color: var(--color-bg);
+    margin: 0;
+    line-height: 1.7;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+/* Убираем "стекло", делаем чистые, материальные панели */
+.glass-panel {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow);
+    border-radius: var(--border-radius);
+    padding: 2.5rem;
+}
+
+/* Хедер */
+.main-header {
+    background-color: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+    padding: 15px 0;
+}
+
+.main-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+/* Логотип теперь элегантный и строгий */
+.logo {
+    font-family: var(--font-headings);
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    text-decoration: none;
+}
+
+.main-nav a {
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    font-weight: 700;
+    padding: 8px 12px;
+    position: relative;
+    transition: color var(--transition-speed);
+}
+/* Эффект подчеркивания при наведении */
+.main-nav a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: var(--color-accent-green);
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+.main-nav a:hover, .main-nav a.active {
+    color: var(--color-text-primary);
+}
+.main-nav a:hover::after, .main-nav a.active::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+/* Карточка поста с акцентной линией слева */
+.post-card {
+    margin-bottom: 25px;
+    border-left: 4px solid var(--color-accent-terracotta);
+    padding-left: 2rem; /* Компенсируем отступ для бордера */
+    transition: box-shadow var(--transition-speed), transform var(--transition-speed);
+}
+
+.post-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.post-card a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.post-meta {
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+    margin-bottom: 8px;
+}
+
+.post-title {
+    font-family: var(--font-headings);
+    font-size: 2rem;
+    font-weight: 600;
+    margin: 0 0 12px 0;
+    color: var(--color-text-primary);
+}
+
+.post-description {
+    color: var(--color-text-secondary);
+}
+
+/* Стили для полного поста */
+.post-full h1.post-title {
+    font-size: 2.8rem;
+}
+.post-full-content {
+    font-size: 1.1rem;
+}
+.post-actions {
+    margin-top: 30px;
+    display: flex;
+    gap: 15px;
+}
+
+/* Формы */
+.form-group label {
+    display: block;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--color-text-primary);
+}
+
+.form-control {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+    font-family: var(--font-main);
+    font-size: 1rem;
+    background: #fff;
+    color: var(--color-text-primary);
+    box-sizing: border-box;
+    transition: border-color var(--transition-speed), box-shadow var(--transition-speed);
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--color-accent-green);
+    box-shadow: 0 0 0 3px rgba(74, 108, 82, 0.2);
+}
+
+/* Кнопки */
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    border: none;
+    border-radius: var(--border-radius);
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all var(--transition-speed);
+}
+
+.btn-primary {
+    background-color: var(--color-accent-green);
+    color: #fff;
+}
+.btn-primary:hover {
+    background-color: #38523f; /* Чуть темнее при наведении */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.btn-danger {
+    background-color: #c94a53;
+    color: #fff;
+}
+.btn-danger:hover {
+    background-color: #a13b42;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.btn-secondary {
+    background-color: #e0e0e0;
+    color: var(--color-text-primary);
+}
+.btn-secondary:hover {
+    background-color: #c7c7c7;
+    transform: translateY(-2px);
+}
